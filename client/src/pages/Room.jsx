@@ -310,14 +310,16 @@ const drawStroke = ({
     });
 
     if (socketRef.current?.connected) {
-      socketRef.current.emit("draw-stroke", {
+      socketRef.current.emit("whiteboard-draw", {
         roomId,
-        startX: previousPosition.x,
-        startY: previousPosition.y,
-        endX: nextPosition.x,
-        endY: nextPosition.y,
-        color: brushColor,
-        size: brushSize,
+        stroke: {
+          startX: previousPosition.x,
+          startY: previousPosition.y,
+          endX: nextPosition.x,
+          endY: nextPosition.y,
+          color: brushColor,
+          size: brushSize,
+        },
       });
     }
 
