@@ -4,7 +4,7 @@ A real-time collaborative coding platform built for technical interview practice
 
 ## 🌐 Live Demo
 
-**Demo:** <YOUR_VERCEL_LINK>
+**Demo:** https://coderoom-swart.vercel.app/
 
 ## ✨ Features
 
@@ -26,14 +26,8 @@ A real-time collaborative coding platform built for technical interview practice
 - 🎨 **Collaborative Whiteboard**
   - Shared drawing canvas synchronized across all connected users.
 
-- ▶️ **Code Execution**
-  - Execute code directly within the workspace.
-
 - ⏱️ **Interview Timer**
   - Built-in timer to simulate coding interview sessions.
-
-- 📄 **Problem Statement Panel**
-  - Dedicated panel for displaying interview questions alongside the editor.
 
 - 🌙 **Theme Toggle**
   - Switch between light and dark modes.
@@ -62,15 +56,19 @@ A real-time collaborative coding platform built for technical interview practice
 
 ### Landing Page
 
-> *(Add screenshot here)*
+<img width="959" height="440" alt="image" src="https://github.com/user-attachments/assets/84c469b9-9550-47d4-8759-51d3c0c570b5" />
 
 ### Collaborative Workspace
 
-> *(Add screenshot here)*
+<img width="956" height="437" alt="image" src="https://github.com/user-attachments/assets/5174de2a-59bf-4ef4-ad6a-f393cbb63471" />
+<img width="953" height="431" alt="image" src="https://github.com/user-attachments/assets/0750fdec-ac30-40d2-b46a-96d2a188b709" />
+
 
 ### Whiteboard
 
-> *(Add screenshot here)*
+<img width="946" height="440" alt="image" src="https://github.com/user-attachments/assets/ef954f7f-3709-4df1-8d72-7be9db0f4228" />
+<img width="952" height="440" alt="image" src="https://github.com/user-attachments/assets/7563ecd1-497c-4618-8b4f-c8f776e78c6e" />
+
 
 ---
 
