@@ -10,6 +10,7 @@ function Home() {
   const [username, setUsername] = useState("");
   const [roomId, setRoomId] = useState("");
   const [error, setError] = useState("");
+  const [isCreating, setIsCreating] = useState(false);
   const navigate = useNavigate();
 
   const createRoom = () => {
@@ -23,6 +24,7 @@ function Home() {
     setError("");
     localStorage.setItem("coderoomUsername", trimmedUsername);
 
+    setIsCreating(true);
     fetch("https://coderoom-fi7c.onrender.com/room", {
       method: "POST",
     })
@@ -31,7 +33,11 @@ function Home() {
         navigate(`/room/${data.room.roomId}`, {
           state: { username: trimmedUsername },
         });
-      });
+      })
+      .catch(() => {
+        setError("Failed to create room. Please try again.");
+      })
+      .finally(() => setIsCreating(false));
   };
 
   const joinRoom = (event) => {
@@ -73,6 +79,7 @@ function Home() {
         setRoomId={setRoomId}
         error={error}
         createRoom={createRoom}
+        isCreating={isCreating}
         joinRoom={joinRoom}
       />
 

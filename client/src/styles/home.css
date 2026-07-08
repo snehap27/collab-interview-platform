@@ -1146,3 +1146,21 @@ margin:auto;
 }
 
 }
+
+/* Creating room loader */
+.creating-room{
+    text-align:center;
+    padding:10px 12px;
+    background:rgba(59,130,246,.08);
+    color:#60a5fa;
+    border-radius:10px;
+    font-weight:700;
+}
+
+.login-card button[disabled],
+.login-card input[disabled]{
+    opacity:0.6;
+    cursor:not-allowed;
+    transform:none;
+    box-shadow:none;
+}
