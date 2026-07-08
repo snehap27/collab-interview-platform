@@ -14,7 +14,17 @@ function Navbar({
   onPauseTimer,
   onResetTimer
 }) {
-  const [copied, setCopied] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
+  const handleCopyClick = () => {
+    onCopyRoomId();
+    setShowToast(true);
+
+    window.setTimeout(() => {
+      setShowToast(false);
+    }, 2000);
+  };
+
   return (
     <header className="navbar">
       <div className="navbar-logo">
@@ -22,21 +32,17 @@ function Navbar({
       </div>
 
       <div className="navbar-room">
-        <span>ID: {roomId}</span>
+        <span className="room-label">
+          Room: {roomId}
+        </span>
 
         <button
           className="copy-button"
-          onClick={() => {
-          onCopyRoomId();
-          setCopied(true);
-
-          setTimeout(() => {
-          setCopied(false);
-      },  2000);
-    }}
-  >
-  {copied ? "Copied!" : "📋"}
-</button>
+          aria-label="Copy room ID"
+          onClick={handleCopyClick}
+        >
+          📋
+        </button>
       </div>
 
       <div className="navbar-actions">
@@ -83,6 +89,10 @@ function Navbar({
           Leave
         </button>
 
+      </div>
+
+      <div className={`toast ${showToast ? "visible" : ""}`}>
+        Room ID copied
       </div>
     </header>
   );

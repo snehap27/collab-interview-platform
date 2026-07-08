@@ -12,7 +12,11 @@ body {
 .page {
   max-width: 1040px;
   margin: 0 auto;
-  padding: 48px 24px;
+  padding: 32px 20px;
+}
+
+.page.room-page {
+  padding-top: 12px;
 }
 
 h1 {

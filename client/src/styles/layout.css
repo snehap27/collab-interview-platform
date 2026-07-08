@@ -1,15 +1,20 @@
 .room-layout{
     display:flex;
     flex-direction:column;
-    gap:25px;
+    gap:24px;
     padding:20px;
+}
+
+.room-page{
+    max-width:1480px;
+    width:100%;
 }
 
 /* Top 3-column layout */
 .top-layout{
     display:grid;
-    grid-template-columns:180px 2fr 260px;
-    gap:25px;
+    grid-template-columns:200px minmax(0, 2.6fr) 380px;
+    gap:26px;
 }
 
 /* Column heights */
@@ -33,10 +38,11 @@
 }
 .editor-container,
 .output-panel,
-.whiteboard-row{
-    background:white;
-    border:1px solid #ddd;
-    border-radius:15px;
+.whiteboard-row,
+.whiteboard-toggle{
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    border-radius:8px;
 }
 
 /* Padding */
@@ -51,8 +57,8 @@
 .editor-container{
     flex:1;
     width:100%;
-    border:1px solid #ddd;
-    border-radius:16px;
+    border:1px solid #e2e8f0;
+    border-radius:8px;
     overflow:hidden;
     box-sizing:border-box;
 }
@@ -60,12 +66,16 @@
 .users-panel{
     height:100%;
     overflow-y:auto;
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
 }
 
 /* Problem panel */
 .problem-panel{
     height:100%;
     overflow-y:auto;
+    background:#ffffff;
+    border:1px solid #e2e8f0;
 }
 
 /* User list */
@@ -81,18 +91,86 @@
 .user-card{
     display:flex;
     align-items:center;
-    gap:12px;
-    padding:15px;
-    border-radius:12px;
-    background:#f8fafc;
-    margin-bottom:12px;
-    font-size:17px;
+    gap:14px;
+    padding:12px;
+    border-radius:8px;
+    background:#f1f5f9;
+    margin-bottom:14px;
+    font-size:15px;
+    color:#1f2937;
+}
+
+.user-avatar{
+    width:38px;
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:#2563eb;
+    color:white;
+    font-weight:700;
+    font-size:13px;
+}
+
+.user-info{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+}
+
+.user-name{
+    font-weight:700;
+    font-size:15px;
+}
+
+.user-self{
+    color:#475569;
+    font-size:13px;
 }
 
 /* Headings */
 .users-panel h2,
 .problem-panel h2{
-    margin-bottom:30px;
+    margin-bottom:24px;
+    font-size:20px;
+    letter-spacing:-0.02em;
+}
+
+.problem-panel h3,
+.problem-panel h4{
+    margin-top:24px;
+    margin-bottom:12px;
+    color:#0f172a;
+}
+
+.problem-panel p,
+.problem-panel li,
+.test-case h4{
+    font-size:15px;
+    line-height:1.65;
+    color:#334155;
+}
+
+/* Improve spacing inside problem content */
+.problem-panel p,
+.problem-panel li{
+    margin-bottom:12px;
+}
+
+.problem-panel ul{
+    padding-left:18px;
+    margin:0 0 12px 0;
+}
+
+/* Dark theme problem text for readability */
+.dark-theme .problem-panel,
+.dark-theme .problem-panel p,
+.dark-theme .problem-panel li,
+.dark-theme .problem-panel h2,
+.dark-theme .problem-panel h3,
+.dark-theme .problem-panel h4{
+    color:#e6eef8;
 }
 
 /* Whiteboard */
@@ -103,11 +181,11 @@
 .whiteboard-toggle{
     width:100%;
     text-align:left;
-    padding:18px 20px;
+    padding:14px 16px;
     background:white;
-    border:1px solid #ddd;
-    border-radius:15px;
-    font-size:18px;
+    border:1px solid #e2e8f0;
+    border-radius:8px;
+    font-size:16px;
     font-weight:600;
     cursor:pointer;
 }
@@ -120,7 +198,7 @@
 .whiteboard{
     width:100%;
     background:white;
-    border-radius:15px;
+    border-radius:8px;
 }
 
 /* Output */
@@ -133,8 +211,7 @@
 }
 
 /* Responsive */
-@media (max-width:1000px){
-
+@media (max-width:1100px){
     .top-layout{
         grid-template-columns:1fr;
     }
@@ -145,54 +222,167 @@
         height:auto;
     }
 }
+
+/* Custom scrollbars */
+.users-panel::-webkit-scrollbar,
+.problem-panel::-webkit-scrollbar,
+.output-panel::-webkit-scrollbar{
+    width:10px;
+}
+
+.users-panel::-webkit-scrollbar-thumb,
+.problem-panel::-webkit-scrollbar-thumb,
+.output-panel::-webkit-scrollbar-thumb{
+    background:rgba(148,163,184,0.6);
+    border-radius:999px;
+}
+
+.users-panel::-webkit-scrollbar-track,
+.problem-panel::-webkit-scrollbar-track,
+.output-panel::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+/* Narrow scrollbar for sample inputs / test-case blocks inside the problem panel */
+.problem-panel .test-case pre::-webkit-scrollbar{
+    width:8px;
+    height:8px;
+}
+
+.problem-panel .test-case pre::-webkit-scrollbar-thumb{
+    background:rgba(148,163,184,0.5);
+    border-radius:999px;
+}
+
+.problem-panel .test-case pre::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.dark-theme .problem-panel .test-case pre::-webkit-scrollbar-thumb{
+    background:rgba(148,163,184,0.35);
+}
+
+/* Also apply the same narrow scrollbar to the example <pre> blocks */
+.problem-panel > pre::-webkit-scrollbar,
+.problem-panel pre::-webkit-scrollbar{
+    width:8px;
+    height:8px;
+}
+
+.problem-panel > pre::-webkit-scrollbar-thumb,
+.problem-panel pre::-webkit-scrollbar-thumb{
+    background:rgba(148,163,184,0.5);
+    border-radius:999px;
+}
+
+.problem-panel > pre::-webkit-scrollbar-track,
+.problem-panel pre::-webkit-scrollbar-track{
+    background:transparent;
+}
+
+.dark-theme .problem-panel > pre::-webkit-scrollbar-thumb,
+.dark-theme .problem-panel pre::-webkit-scrollbar-thumb{
+    background:rgba(148,163,184,0.35);
+}
 .output-box{
-    background:#1e1e1e;
-    color:#ffffff;
-    padding:15px;
-    border-radius:10px;
-    min-height:80px;
+    background:#111827;
+    color:#e5e7eb;
+    padding:12px;
+    border-radius:8px;
+    min-height:100px;
     overflow-x:auto;
-    font-family:monospace;
+    font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size:13px;
+    line-height:1.6;
 }
 .run-button{
     width:100%;
-    height:60px;
+    height:56px;
     border:none;
-    border-radius:16px;
+    border-radius:8px;
     background:#22c55e;
     color:white;
-    font-size:20px;
-    font-weight:600;
+    font-size:18px;
+    font-weight:700;
     cursor:pointer;
+    box-shadow:0 10px 20px rgba(34,197,94,0.14);
 }
 .run-button:hover{
     background:#16a34a;
 }
+
+.language-selector-wrapper{
+    width:100%;
+    max-width:180px;
+}
+
+.language-selector{
+    width:100%;
+    padding:10px 12px;
+    border-radius:8px;
+    border:1px solid #cbd5e1;
+    background:#ffffff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2374757b'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.25 8.29a.75.75 0 01-.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E") no-repeat right 12px center;
+    background-size:12px;
+    color:#0f172a;
+    font-size:14px;
+    font-weight:600;
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    cursor:pointer;
+    transition:border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.language-selector:hover{
+    border-color:#94a3b8;
+}
+
+.language-selector:focus{
+    outline:none;
+    border-color:#3b82f6;
+    box-shadow:0 0 0 4px rgba(59,130,246,0.16);
+}
+
+.dark-theme .language-selector{
+    background:#1e293b url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23cbd5e1'%3E%3Cpath fill-rule='evenodd' d='M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.25 8.29a.75.75 0 01-.02-1.06z' clip-rule='evenodd'/%3E%3C/svg%3E") no-repeat right 12px center;
+    background-size:12px;
+    color:#f8fafc;
+    border-color:#334155;
+}
+
+.dark-theme .language-selector:focus{
+    border-color:#60a5fa;
+    box-shadow:0 0 0 4px rgba(96,165,250,0.16);
+}
+
 .editor-section{
     display:flex;
     flex-direction:column;
-    gap:18px;
+    gap:16px;
     height:100%;
 }
 
 .editor-container{
     flex:1;
     width:100%;
-    border:1px solid #ddd;
-    border-radius:16px;
+    border:1px solid #e2e8f0;
+    border-radius:8px;
     overflow:hidden;
     box-sizing:border-box;
 }
 .problem-panel pre{
     background:#f8fafc;
-    padding:15px;
-    border-radius:10px;
+    padding:10px;
+    border-radius:8px;
     overflow-x:auto;
+    font-size:14px;
+    line-height:1.65;
 }
 
 .dark-theme .problem-panel pre{
-    background:#374151;
+    background:#111827;
 }
+
 .problem-panel{
     overflow-y:auto;
 }
@@ -203,7 +393,7 @@
 .test-case pre{
     background:#f8fafc;
     padding:15px;
-    border-radius:10px;
+    border-radius:8px;
     overflow-x:auto;
     line-height:1.6;
 }
@@ -218,13 +408,17 @@
 }
 
 .whiteboard-button{
-    padding:12px 20px;
+    padding:0 20px;
     border:none;
-    border-radius:12px;
+    border-radius:5px;
     background:#3b82f6;
     color:white;
-    font-size:16px;
+    font-size:14px;
     cursor:pointer;
+    height:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .whiteboard-button:hover{
@@ -262,4 +456,29 @@
 
 .brush-toolbar{
     margin-bottom:20px;
+}
+
+/* Dark theme overrides for room panels */
+.dark-theme .editor-container,
+.dark-theme .users-panel,
+.dark-theme .problem-panel,
+.dark-theme .output-panel,
+.dark-theme .whiteboard-row,
+.dark-theme .whiteboard-toggle{
+    background:#0b1220;
+    border-color:#1f2937;
+    color:#e5e7eb;
+}
+
+.dark-theme .users-panel{
+    background:#0f1724;
+}
+
+.dark-theme .user-card{
+    background:#0b1220;
+    color:#e6eef8;
+}
+
+.dark-theme .user-avatar{
+    background:#1e3a8a;
 }

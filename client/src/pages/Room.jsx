@@ -433,56 +433,54 @@ const handleSaveWhiteboard = () => {
         />
   }
       />
-      <main className="page">
-    
-      <RoomLayout
-        usersPanel={
-        <UsersPanel users={users} />
-      }
-      editorPanel={
-  <div className="editor-section">
+      <main className="page room-page">
+        <RoomLayout
+          usersPanel={
+            <UsersPanel users={users} currentUsername={username} />
+          }
+          editorPanel={
+            <div className="editor-section">
+              <LanguageSelector
+                language={language}
+                setLanguage={setLanguage}
+              />
 
-    <LanguageSelector
-      language={language}
-      setLanguage={setLanguage}
-    />
+              <RunButton handleRun={handleRun} />
 
-    <RunButton handleRun={handleRun} />
-
-    <EditorPanel
-      code={code}
-      handleCodeChange={handleCodeChange}
-      editorRef={editorRef}
-      monacoRef={monacoRef}
-      socketRef={socketRef}
-      roomId={roomId}
-      username={username}
-      darkMode={darkMode}
-      language={language}
-    />
-
-  </div>
+              <EditorPanel
+                code={code}
+                handleCodeChange={handleCodeChange}
+                editorRef={editorRef}
+                monacoRef={monacoRef}
+                socketRef={socketRef}
+                roomId={roomId}
+                username={username}
+                darkMode={darkMode}
+                language={language}
+              />
+            </div>
+          }
+          problemPanel={<ProblemPanel />}
+          whiteboardPanel={
+            <WhiteboardPanel
+              canvasRef={canvasRef}
+              width={1000}
+              height={300}
+              onClear={handleClearWhiteboard}
+              onSave={handleSaveWhiteboard}
+              brushColor={brushColor}
+              setBrushColor={setBrushColor}
+              brushSize={brushSize}
+              setBrushSize={setBrushSize}
+            />
+          }
+          outputPanel={
+            <OutputPanel output={output} />
+          }
+        />
+      </main>
+    </div>
+  );
 }
-      problemPanel={<ProblemPanel />}
-      whiteboardPanel={
-  <WhiteboardPanel
-  canvasRef={canvasRef}
-  width={1000}
-  height={300}
-  onClear={handleClearWhiteboard}
-  onSave={handleSaveWhiteboard}
-  brushColor={brushColor}
-  setBrushColor={setBrushColor}
-  brushSize={brushSize}
-  setBrushSize={setBrushSize}
-/>
-}
-      outputPanel={
-        <OutputPanel output={output}/>
-      }
-    />
-    </main>
-</div>
-);
-}
+
 export default Room;
