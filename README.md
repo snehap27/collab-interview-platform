@@ -174,3 +174,18 @@ Events synchronized across connected clients include:
 - CI/CD pipeline
 
 ---
+# 👥 Contributors
+
+## Akanksha Singh
+- B.Tech Electronics & Communication Engineering
+- Indira Gandhi Delhi Technical University for Women (IGDTUW)
+- GitHub: https://github.com/Akanksha-Singh27
+- LinkedIn: https://www.linkedin.com/in/akanksha-singh-858020327/
+
+## Ananya Satyapal
+- GitHub: https://github.com/...
+- LinkedIn: https://linkedin.com/in/...
+
+## Sneha Pandey
+- GitHub: https://github.com/...
+- LinkedIn: https://linkedin.com/in/...
