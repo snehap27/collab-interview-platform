@@ -10,7 +10,7 @@ function Home() {
   const [username, setUsername] = useState("");
   const [roomId, setRoomId] = useState("");
   const [error, setError] = useState("");
-  const [isCreating, setIsCreating] = useState(false);
+  const [isCreating, setIsCreating] = useState(false); // State to track if a room is being created
   const navigate = useNavigate();
 
   const createRoom = () => {
